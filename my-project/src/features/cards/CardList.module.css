@@ -7,4 +7,5 @@ ul{
     width: 70vw;
 }
 .hidden{
+    display: none;
 }

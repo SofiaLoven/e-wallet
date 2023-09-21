@@ -10,7 +10,7 @@ export const getCardHolder = createAsyncThunk("cardSlice/getCardHolder", async()
 const cardSlice = createSlice({
     name: "cardSlice",
     initialState:{
-        card: {
+        card: { //Bryt ut och gör till local state med useState
             vendor: null,
             cardNumber: 0,
             cardHolder: "",
@@ -45,6 +45,10 @@ const cardSlice = createSlice({
                 console.log("Du behöver ta bort ett kort först");
             }
         },
+        removeCard: (state, action)=>{
+            state.cardArr.splice(action.payload, 1);
+            console.log(state.cardArr);
+        },
         activateCard: (state, action)=>{
             let i = action.payload; // Använd key istället??
             let clicked = state.cardArr[i]
@@ -62,8 +66,6 @@ const cardSlice = createSlice({
                     }
                 })
             }
-            //state.cardArr[i].active = !state.cardArr[i].active;
-            console.log(state.cardArr[i].active, i);
             
         },
         getCardHolder: async ()=>{},
@@ -89,6 +91,6 @@ const cardSlice = createSlice({
 })
 
 
-export const { changeVariable, addCard, activateCard } = cardSlice.actions;
+export const { changeVariable, addCard, activateCard, removeCard } = cardSlice.actions;
 export default cardSlice.reducer;
 

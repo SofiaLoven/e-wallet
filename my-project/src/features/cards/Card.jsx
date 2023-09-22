@@ -2,10 +2,8 @@ import style from "./Card.module.css";
 import { activateCard } from "./cardSlice";
 import { useDispatch } from "react-redux";
 
-const Card= ({vendor, cardNumber, cardHolder, expireMonth, expireYear, cvv, active, i})=>{
-    // använd use state här för att göra kortet aktivt?
+const Card= ({vendor, cardNumber, cardHolder, expireMonth, expireYear, cvv, i})=>{
     const dispatch = useDispatch();
-    
 
     return(
         <li>

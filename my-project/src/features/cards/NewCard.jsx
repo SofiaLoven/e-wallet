@@ -1,18 +1,36 @@
 import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
-import { changeVariable, addCard } from "./cardSlice";
+import { addCard } from "./cardSlice";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 export const NewCard =()=>{
-    //Hämta alla nya värden? går dem att skicka som objekt?
     const dispatch = useDispatch();
-    const {card} = useSelector((state)=>state.cards);
+    const {getCardHolder} = useSelector((store)=>store.cards)
+    const [vendor, setVendor] = useState(null);
+    const [cardNumber, setCardNumber] = useState(null);
+    const [expireMonth, setExpireMonth] = useState(null);
+    const [expireYear, setExpireYear] = useState(null);
+    const [cvv, setCvv] = useState(null);
+    //const errorTxt = document.querySelector("#error");
+    
+    let card = {
+        vendor, 
+        cardNumber, 
+        cardHolder: getCardHolder, 
+        expireMonth, 
+        expireYear, 
+        cvv, 
+        active:false
+    };
 
-    const changeCard = (id)=>{
-        let newVariable = document.getElementById(id).value;
-        let variableObj = {name: id, value: newVariable};
-        dispatch(changeVariable(variableObj));
+    const checkInputs =()=>{
+        if(vendor === null || cardNumber === null || expireMonth === null || expireYear=== null || cvv === null ){
+            alert("Please fill in all youre info");
+        }else{
+            dispatch(addCard(card));
+        }
     }
 
     return(
@@ -24,29 +42,50 @@ export const NewCard =()=>{
             <div className="addNew">
                 <div> 
                     <label >Cardnumber
-                    <input onChange={()=>{changeCard("cardNumber")}} type="text" id="cardNumber" />
-                    </label>
+                    <input onChange={(e)=>{
+                        let cardNumber = e.target.value;
+                        let errorTxt = document.querySelector("#cardNumb");
+                        if(!/^\d+$/.test(cardNumber)){
+                            errorTxt.innerText = "You can only use numbers"
+                        }else if(cardNumber.length < 16){
+                            errorTxt.innerText = "You need to have 16 digits in youre cardnumber";
+                        }else{
+                            errorTxt.innerHTML="";
+                            setCardNumber(cardNumber);
+                        }
+                     }} type="text" maxLength={"16"} />
+                    </label><p id="cardNumb"></p>
                     <label >Name
-                    <input  type="text" id="name" value ={card.cardHolder} />
+                    <input  type="text" value ={getCardHolder} readOnly />
                     </label>
                     <div>
                         <label >Valid thru
-                        <input onChange={()=>{changeCard("expireMonth")}} type="number" id="expireMonth" />
-                        <input onChange={()=>{changeCard("expireYear")}} type="number" id="expireYear"/>
+                        <input onChange={(e)=>{
+                            setExpireMonth(e.target.value);
+                          
+                        }} type="number" />
+                        <input onChange={(e)=>{
+                            setExpireYear(e.target.value)
+                            }} type="number"/>
                         </label>
                         <label >CVV
-                        <input onChange={()=>{changeCard("cvv")}} type="number" id="cvv"/>
+                        <input onChange={(e)=>{
+                            setCvv(e.target.value);
+                            }} type="number"/>
                         </label>
                     </div>
                     <label>Vendor
-                        <select onChange={()=>{changeCard("vendor")}} id="vendor">
-                            <option selected defaultValue={""}></option>
-                            <option>Bank of Magic</option>
-                            <option>Visa</option>
-                            <option>Mastercard</option>
+                        <select onChange={(e)=>{
+                            setVendor(e.target.value)
+                            }}>
+                            <option selected value={""}></option>
+                            <option value={"Bank of Magic"}>Bank of Magic</option>
+                            <option value={"Visa"}>Visa</option>
+                            <option value={"Mastercard"}>Mastercard</option>
                         </select>
                     </label>
-                    <Link to={"/"}><button onClick={()=>{dispatch(addCard(card))}}>Add Card</button></Link>
+                    <span id="error"></span>
+                    <Link to={"/"}><button onClick={checkInputs}>Add Card</button></Link>
                 </div>
             </div>
         </div>

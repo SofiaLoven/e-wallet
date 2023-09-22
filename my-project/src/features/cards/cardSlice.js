@@ -1,24 +1,15 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import { useState } from "react";
+import axios from "axios";
 
 export const getCardHolder = createAsyncThunk("cardSlice/getCardHolder", async()=>{
-    let response = await fetch (`https://randomuser.me/api/`);
-    let data = response.json();
-    return data;
+    let response = await axios.get(`https://randomuser.me/api/`);
+    return response.data;
 })
 
 const cardSlice = createSlice({
     name: "cardSlice",
     initialState:{
-        card: { //Bryt ut och gör till local state med useState
-            vendor: null,
-            cardNumber: 0,
-            cardHolder: "",
-            expireMonth: 0,
-            expireYear: 0,
-            cvv:0,
-            active: false,
-        },
+        getCardHolder:"",
         cardArr: [{
             vendor: "Visa",
             cardNumber: 123456789087654,
@@ -31,12 +22,6 @@ const cardSlice = createSlice({
         status: null,
     },
     reducers:{
-        changeVariable: (state, action)=>{
-            const obj = action.payload;
-            let { name, value }= obj;
-            state.card[name]= value;
-
-        },
         addCard: (state, action)=>{
 
             if(state.cardArr.length < 4){
@@ -50,7 +35,7 @@ const cardSlice = createSlice({
             console.log(state.cardArr);
         },
         activateCard: (state, action)=>{
-            let i = action.payload; // Använd key istället??
+            let i = action.payload; 
             let clicked = state.cardArr[i]
             console.log(clicked);
 
@@ -81,8 +66,8 @@ const cardSlice = createSlice({
             let {first, last} = user.results[0].name;
             console.log("Hämtar data");
             console.log(first, last);
-            state.card.cardHolder = `${first} ${last}`.toUpperCase();         
-            state.cardArr[0].cardHolder = `${first} ${last}`.toUpperCase();         
+            state.getCardHolder = `${first} ${last}`.toUpperCase();    
+            state.cardArr[0].cardHolder =  `${first} ${last}`.toUpperCase();          
         },
         [getCardHolder.rejected]: (state, action)=>{
             state.status = "Failed..";
@@ -91,6 +76,6 @@ const cardSlice = createSlice({
 })
 
 
-export const { changeVariable, addCard, activateCard, removeCard } = cardSlice.actions;
+export const { addCard, activateCard, removeCard } = cardSlice.actions;
 export default cardSlice.reducer;
 

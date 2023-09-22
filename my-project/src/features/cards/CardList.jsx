@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Card from "./Card";
 import style from "./CardList.module.css"
 import DeleteCard from "../../components/DeleteCard";

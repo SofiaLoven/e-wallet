@@ -20,7 +20,9 @@ const DeleteCard =()=>{
             <button onClick={()=>{
                 let deletedCard = document.querySelector("#deletedCard");
                 if(deletedCard.value !== "empty"){
-                    dispatch(removeCard(deletedCard.value))}}
+                    dispatch(removeCard(deletedCard.value))
+                    deletedCard.value = "empty";
+                }}
                 }
                 >Delete</button>         
         </div>

@@ -4,7 +4,7 @@ import Navigation from "../components/navigation"
 export const Cards =()=>{
 
     return(
-        <div>
+        <div className="cards">
             <h2>Cards</h2>
             <CardList/>
             <Navigation/>

@@ -1,4 +1,23 @@
-button{
-    width: 50%;
+.navigation{
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    height: 1rem;
+    
+}
+.links{
+    display: flex;
+}
+.links :is(p){
+    color: black;
+    text-decoration: none;
+    margin: 12px;
+    font-size: 0.8rem;
+    
+}
 
+.links :is(p:hover){
+    border-bottom:2px solid black ;
+    transform: scale(1.1);
+    transition: 300ms;
 }

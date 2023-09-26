@@ -7,7 +7,7 @@ export const Root =()=>{
     dispatch(getCardHolder());
     
     return(
-        <div>
+        <div className="website"> 
             <Outlet/>
         </div>
     )

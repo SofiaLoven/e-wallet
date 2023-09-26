@@ -1,8 +1,65 @@
 body{
+  position: relative;
+  min-height: 100vh;
   background-color: white;
-  color: rgb(85, 81, 81);
+  color: rgb(58, 55, 55);
+  margin: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+.website{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+}
 
+button{
+  margin: 8px;
+  outline: 0;
+  grid-gap: 8px;
+  align-items: center;
+  background: 0 0;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 12px;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 8px 12px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .14s ease-out;
+  white-space: nowrap; 
+}
+button:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px,-4px);
+}
+button:focus-visible{
+    outline-offset: 1px;
+}
+
+
+.cards{
+  text-align: center;
+}
+
+.addCard{
+  text-align: center;
+}
+
+.Dwight{
+  background-color: blueviolet;
+}
+.Jim{
+  background-color: pink;
+}
+.Michael{
+  background-color: aquamarine;
+}
+.Kevin{
+  background-color: yellow;
 }

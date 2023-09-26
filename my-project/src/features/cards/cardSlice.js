@@ -11,8 +11,9 @@ const cardSlice = createSlice({
     initialState:{
         getCardHolder:"",
         cardArr: [{
-            vendor: "Visa",
-            cardNumber: 123456789087654,
+            vendor: "Dwight",
+            vendorPic: "../../../public/pictures/dwight.png",
+            cardNumber: "1234 5678 9087 6544",
             cardHolder:"",
             expireMonth: 12,
             expireYear: 24,
@@ -67,7 +68,7 @@ const cardSlice = createSlice({
             console.log("Hämtar data");
             console.log(first, last);
             state.getCardHolder = `${first} ${last}`.toUpperCase();    
-            state.cardArr[0].cardHolder =  `${first} ${last}`.toUpperCase();          
+            state.cardArr[0].cardHolder =  `${first} ${last}`.toUpperCase();         
         },
         [getCardHolder.rejected]: (state, action)=>{
             state.status = "Failed..";

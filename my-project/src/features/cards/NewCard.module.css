@@ -1,0 +1,41 @@
+.newCardPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.preview{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.preview > p{
+    margin: 12px 0;
+}
+.addNew{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 286px;
+}
+
+input, select{
+    border: 1.5px solid rgb(80, 79, 79);
+    border-radius: 8px;
+    padding: 2px 0 2px 4px;
+}
+
+
+.expDate{
+    display: flex;
+    justify-content: space-evenly;
+}
+.expDate :is(input){
+    width: 60px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.error{
+    color: red;
+    font-size: 0.7rem;
+}

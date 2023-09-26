@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeCard } from "../features/cards/cardSlice";
+import style from "./DeleteCard.module.css";
 
 
 const DeleteCard =()=>{
@@ -7,8 +8,8 @@ const DeleteCard =()=>{
     const cardArr = useSelector((store)=>store.cards.cardArr);   
 
     return(
-        <div>
-            <p>Choose card number on the card you want to delete</p>
+        <div className={style.deleteCard}>
+            <p>Choose the card number on the card you want to delete</p>
             <select id="deletedCard">
                 <option value="empty" selected></option>
                 {cardArr.map((card, i)=>{

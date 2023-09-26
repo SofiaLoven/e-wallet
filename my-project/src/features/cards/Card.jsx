@@ -1,13 +1,14 @@
 import { useState } from "react";
 import style from "./Card.module.css";
 import { activateCard } from "./cardSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import empty from "../../../public/pictures/empty.png"
 import chip from "../../../public/pictures/chip.png"
 
 
 const Card= ({vendor, vendorPic, cardNumber, cardHolder, expireMonth, expireYear, cvv, i})=>{
     const dispatch = useDispatch();
+    const {status} = useSelector((state)=>state.cards)
     
     return(
         <li>
@@ -18,7 +19,7 @@ const Card= ({vendor, vendorPic, cardNumber, cardHolder, expireMonth, expireYear
                         <p>exp {expireMonth}/{expireYear}</p>
                         <p>cvv {cvv}</p>
                     </div>
-                    <p>{cardHolder}</p>  
+                    <p>{cardHolder === "" ? status : cardHolder}</p>  
                     <img src={chip} alt="Chip" style={{borderRadius: "12px"}} className={style.chip}/> 
             </div>
         </li>

@@ -1,0 +1,8 @@
+.deleteCard{
+    font-size: 0.7rem;
+    margin-bottom: 20px;
+}
+.deleteCard :is(button, select){
+    height: 22px;
+    border: 1px solid grey;
+}

@@ -2,8 +2,8 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getCardHolder = createAsyncThunk("cardSlice/getCardHolder", async()=>{
-    let response = await axios.get(`https://randomuser.me/api/`);
-    return response.data;
+        let response = await axios.get(`https://randomuser.me/api/`);
+        return response.data;
 })
 
 const cardSlice = createSlice({
@@ -62,11 +62,11 @@ const cardSlice = createSlice({
             state.status = "Loading...";
         },
         [getCardHolder.fulfilled]: (state, action)=>{
-            state.status = "Success!";
+    
             let user = action.payload;
             let {first, last} = user.results[0].name;
-            console.log("Hämtar data");
-            console.log(first, last);
+            //console.log("Hämtar data");
+            //console.log(first, last);
             state.getCardHolder = `${first} ${last}`.toUpperCase();    
             state.cardArr[0].cardHolder =  `${first} ${last}`.toUpperCase();         
         },

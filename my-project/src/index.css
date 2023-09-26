@@ -52,14 +52,26 @@ button:focus-visible{
 }
 
 .Dwight{
-  background-color: blueviolet;
+  background-image: url("../public/bbb.png");
+  background-color: rgb(39, 3, 74);
+  background-size: cover;
+  color: rgb(251, 245, 238);
 }
 .Jim{
-  background-color: pink;
+  background-image: url("../public/pam.png");
+  background-color: rgb(109, 177, 135);
+  background-size: cover;
+  color: rgb(243, 226, 207);
 }
 .Michael{
-  background-color: aquamarine;
+  background-image: url("../public/dundee.png");
+  background-color: rgb(245, 182, 224);
+  background-size: cover;
+  color: rgb(10, 6, 63);
 }
 .Kevin{
-  background-color: yellow;
+  background-image: url("../public/candy.avif");
+  background-color: rgb(178, 119, 234);
+  background-size:cover;
+  color: rgb(255, 255, 255);
 }

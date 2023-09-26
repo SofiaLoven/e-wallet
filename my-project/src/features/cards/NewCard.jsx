@@ -83,7 +83,7 @@ export const NewCard =()=>{
                             let expYear = e.target.value;
                             if(expYear<23){
                                 errorExp.innerText= "Please choose a yeare in the future.."
-                            }else if(expYear>100){
+                            }else if(expYear>99){
                                 errorExp.innerText = "This is not at year."
                             }else{
                                 errorExp.innerText="";
